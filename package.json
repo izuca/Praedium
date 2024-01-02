@@ -1,0 +1,23 @@
+{
+  "name": "praedium",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/izuca/Praedium.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/izuca/Praedium/issues"
+  },
+  "homepage": "https://github.com/izuca/Praedium#readme",
+  "dependencies": {
+    "mercedlogger": "^1.0.1"
+  }
+}
