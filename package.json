@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/izuca/Praedium#readme",
   "dependencies": {
+    "@prisma/client": "^5.7.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -26,5 +27,8 @@
     "mercedlogger": "^1.0.1",
     "morgan": "^1.10.0",
     "nodemon": "^3.0.2"
+  },
+  "devDependencies": {
+    "prisma": "^5.7.1"
   }
 }

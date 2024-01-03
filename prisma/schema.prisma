@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(255)
+  email String @unique @db.VarChar(255)
+  password String @db.VarChar(255)
+  type Boolean @db.Boolean
+  properties Properties[]
+}
+
+model Properties {
+  id Int @id @default(autoincrement())
+  title String @db.VarChar(255)
+  description String? @db.Text
+  address String @db.VarChar(255)
+  propertyType String @db.VarChar(255)
+  bedrooms Int?
+  bathrooms Int?
+  area Float?
+  rentAmount Decimal
+  available Boolean @default(true)
+  city String
+  state String
+  creationDate DateTime @default(now())
+
+  ownerId Int?
+  owner User? @relation(fields: [ownerId], references: [id])
+}
