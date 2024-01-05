@@ -10,7 +10,7 @@ const app = express();
 const port = 8000;
 
 async function main(){
-    const allImoveis = await prisma.imoveis.findMany();
+    const allImoveis = await prisma.properties.findMany();
     console.log(allImoveis)
 }
 
@@ -34,6 +34,6 @@ app.get("/", (req, res) => {
 
 app.listen(port,() =>{
     
-    console.log("Aplicativo rodando na porta ${port}");
+    console.log(`App running on  http://localhost:${port}`);
 });
 
