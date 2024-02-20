@@ -39,6 +39,18 @@ app.get("/add",(req,res) => {
 			await prisma.$disconnect()
 		})
 })
+
+app.get("/update/:id",(req,res)=>{
+	console.log("Alterando")
+	propertiesController.updateProperty(req.params.id)
+		.then(async()=>{
+			await prisma.$disconnect()
+		})
+		.catch(async(e)=>{
+			console.error(e)
+			await prisma.$disconnect()
+		})
+})
 app.listen(port,() =>{
     
     console.log(`App running on  http://localhost:${port}`);

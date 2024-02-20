@@ -10,6 +10,7 @@ const getProperties = async()=>{
 	console.log(allImoveis)
 }
 
+
 //Create
 const createProperty = async()=>{
 	const property = await prisma.properties.create({
@@ -28,8 +29,22 @@ const createProperty = async()=>{
 	console.log("propriedade criada")
 }
 
+//Update
+const updateProperty = async(propId) =>{
+	const id = parseInt(propId,10)
+	const property = await prisma.properties.update({
+		where:{
+			id: id
+		},
+		data: {
+			title: "Nome alterado"
+		}
+	})
+	console.log("Alterado com sucesso")
+}
 
 module.exports = {
 	getProperties,
-	createProperty
+	createProperty,
+	updateProperty
 }
