@@ -43,8 +43,21 @@ const updateProperty = async(propId) =>{
 	console.log("Alterado com sucesso")
 }
 
+//Delete
+const deleteProperty = async(propId) => {
+	const id = parseInt(propId,10)
+	const property = await prisma.properties.delete({
+		where:{
+			id:id
+		}
+	})
+	console.log("Propriedade deletada")
+
+}
+
 module.exports = {
 	getProperties,
 	createProperty,
-	updateProperty
+	updateProperty,
+	deleteProperty
 }

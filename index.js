@@ -51,6 +51,18 @@ app.get("/update/:id",(req,res)=>{
 			await prisma.$disconnect()
 		})
 })
+
+app.get("/delete/:id",(req,res)=>{
+	propertiesController.deleteProperty(req.params.id)
+		.then(async()=>{
+			prisma.$disconnect
+		})
+		.catch(async(e) => {
+			console.error(e)
+			prisma.$disconnect
+		})
+})
+
 app.listen(port,() =>{
     
     console.log(`App running on  http://localhost:${port}`);
