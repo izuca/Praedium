@@ -12,3 +12,4 @@ sys:1: Warning: ../../../gobject/gsignal.c:1760: parameter 1 of type 'SynapseRes
 
 ** (budgie-panel:9031): CRITICAL **: 10:21:58.726: Client.vala:88: Initializing client failed
 ** Message: 10:21:58.840: libsession.vala:45: DESKTOP_AUTOSTART_ID not set, session registration may be broken (not running budgie-desktop?)
+sys:1: Warning: g_bytes_compare: assertion 'bytes1 != NULL' failed
