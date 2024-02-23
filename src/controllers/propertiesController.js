@@ -12,46 +12,40 @@ const getProperties = async()=>{
 
 
 //Create
-const createProperty = async()=>{
-	const property = await prisma.properties.create({
-		data: {
-			title: "Casa aconchegante perto do parque",
-			description: "Uma casa encantadora com jardim",
-			address: "Rua das Flores,123",
-			propertyType:"Casa",
-			rentAmount: 2000.00,
-			available: true,
-			city: "Anápolis",
-			state: "Goiás"
-		}
-	})
-
-	console.log("propriedade criada")
+const createProperty = async(data)=>{
+	try{
+		const property = await prisma.properties.create({data})
+		return property
+	}catch(e){
+		throw new Error(e)
+	}
 }
 
-//Update
+//Update - Need to be more flexible
 const updateProperty = async(propId) =>{
 	const id = parseInt(propId,10)
-	const property = await prisma.properties.update({
-		where:{
-			id: id
-		},
-		data: {
-			title: "Nome alterado"
-		}
-	})
-	console.log("Alterado com sucesso")
+	try{
+		const property = await prisma.properties.update({
+			where:{ id },
+			data: { title: "Nome alterado"	}
+		})
+		return property
+	}catch(e){
+		throw new Error(e)
+	}
 }
 
 //Delete
 const deleteProperty = async(propId) => {
 	const id = parseInt(propId,10)
-	const property = await prisma.properties.delete({
-		where:{
-			id:id
-		}
-	})
-	console.log("Propriedade deletada")
+	try{
+		const property = await prisma.properties.delete({
+		where:{ id }
+		})
+		return property
+	}catch(e){
+		throw new Error(e)
+	}
 
 }
 
