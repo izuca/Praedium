@@ -7,14 +7,17 @@ const prisma = new PrismaClient()
 
 //Create user
 const createUser = async(data) => {
-	const checkUser = await findUser(data.email)
-	if(checkUser)
+	try{
+		const checkUser = await findUser(data.email)
 		log.red("ERROR","User already exists")
-	else{
+		throw new Error("User already exists")
+
+	}catch{
 		const salt = bcrypt.genSaltSync(10);
 		data.password = await bcrypt.hash(data.password,salt)
 		const newUser = await prisma.user.create({data})
 		log.green("STATUS","User created")
+		return newUser
 	}
 }
 
@@ -25,7 +28,9 @@ const findUser = async(email) => {
 			email
 		},
 	})
-		
+	console.log(checkUser)
+	if(!checkUser)
+		throw new Error("User not found")
 	return checkUser
 }
 

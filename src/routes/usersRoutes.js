@@ -7,20 +7,22 @@ const usersController = require("../controllers/usersController.js");
 
 const prisma = new PrismaClient()
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
     log.yellow("STATUS","Checking User")
-	usersController.findUser(req.body.email)
-        .then(async()=>{
-            log.green("STATUS","User found")
-			await prisma.$disconnect()
-        })
-        .catch(async(e)=>{
-            console.error(e)
-            await prisma.$disconnect()
-        })
+	
+	try{
+		const user = await usersController.findUser(req.body.email)
+		log.green("STATUS","User found")
+		await prisma.$disconnect()
+		res.send(user)
+    }catch(e){
+        console.error(e)
+        await prisma.$disconnect()
+		res.status(404).send("User not found")
+    }
 })
 
-router.post("/",(req,res) => {
+router.post("/",async(req,res) => {
 	log.yellow("STATUS","Creating User...")
 	const data = {
 		name: req.body.name,
@@ -28,14 +30,15 @@ router.post("/",(req,res) => {
 		password: req.body.password,
 		type: req.body.type
 	}
-	usersController.createUser(data)
-		.then(async()=>{
-			await prisma.$disconnect()
-		})
-		.catch(async(e) => {
-			console.error(e)
-			await prisma.$disconnect()
-		})
+	try{
+		const newUser = await usersController.createUser(data)
+		await prisma.$disconnect()
+		res.send(newUser)
+	}catch(e){
+		console.error(e)
+		await prisma.$disconnect()
+		res.status(404).send("User already exists")
+	}
 })
 /*
 router.put("/:id",(req,res)=>{
