@@ -1,11 +1,11 @@
-const express = require("express")
+const express = require("express");
 const router = express.Router();
 const {log} = require("mercedlogger");
 const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 const propertiesController = require("../controllers/propertiesController.js");
-const prisma = new PrismaClient()
-
+const prisma = new PrismaClient();
+const { isLoggedIn } = require("../../middlewares/middleware.js");
 router.get("/", async(req, res) => {
 	try{
 		const allProperties = await propertiesController.getProperties()
@@ -18,7 +18,7 @@ router.get("/", async(req, res) => {
 	}
 })
 
-router.post("/",async(req,res) => {
+router.post("/", isLoggedIn, async(req,res) => {
 	log.yellow("STATUS","Creating Property...")
 	const data = {
 		title: req.body.title,
@@ -45,7 +45,7 @@ router.post("/",async(req,res) => {
 	}
 })
 //Needs to search every parameter inserted
-router.put("/",async (req,res)=>{
+router.put("/", isLoggedIn, async (req,res)=>{
 	log.yellow("STATUS","Updating Property...")
 	try{
 		const editedProp = await propertiesController.updateProperty(req.body.id)
@@ -59,7 +59,7 @@ router.put("/",async (req,res)=>{
 	}
 })
 
-router.delete("/",async(req,res)=>{
+router.delete("/", isLoggedIn,async(req,res)=>{
 	log.yellow("STATUS","Deleting Property...")
 	try{
 		await propertiesController.deleteProperty(req.body.id)
