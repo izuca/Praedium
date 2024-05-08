@@ -1,15 +1,21 @@
+import Button from "./button";
+
 export default function SearchMenu() {
   return (
-    <div className="bg-black flex flex-col">
+    <div className="bg-black flex flex-col gap-8 w-80">
       <div className="bg-orange h-6" />
-      <div className="p-12">
-        <h2 className="text-white-900 text-xl font-thin text-center w-40">
+      <div className="flex justify-center">
+        <h2 className="text-white-900 text-2xl font-thin text-center w-40">
           Encontre o seu imóvel aqui.
         </h2>
       </div>
-      <ul className="flex flex-col items-center ">
+      <ul className="flex flex-col items-center gap-4 pb-8">
         <li>
-          <select name="contrato" id="contrato" className="w-56 py-2 px-3 text-sm bg-black border-solid border-2 text-white-600 font-thin border-white-600 ">
+          <select
+            name="contrato"
+            id="contrato"
+            className="w-56 py-2 px-3 text-sm bg-black border-solid border hover:border-2 focus:border-2 text-white-600 font-thin border-white-600 "
+          >
             <option value="Apartamento">Apartamento</option>
             <option value="Studio">Studio</option>
             <option value="Kitnet">Kitnet</option>
@@ -23,11 +29,15 @@ export default function SearchMenu() {
             name=""
             id=""
             placeholder="Cidade, Bairro ou Cidade"
-            className="w-56 py-2 px-3 text-sm bg-black border-solid border-2 text-white-600 font-thin border-white-600 "
+            className="w-56 py-2 px-3 text-sm bg-black border-solid border hover:border-2 focus:border-2 text-white-600 font-thin border-white-600 placeholder-white-600 "
           />
         </li>
         <li>
-          <select id="estado" name="estado" className="w-56 py-2 px-3 text-sm bg-black border-solid border-2 text-white-600 font-thin border-white-600 ">
+          <select
+            id="estado"
+            name="estado"
+            className="w-56 py-2 px-3 text-sm bg-black border-solid border hover:border-2 focus:border-2 text-white-600 font-thin border-white-600 "
+          >
             <option value="AC">Acre</option>
             <option value="AL">Alagoas</option>
             <option value="AP">Amapá</option>
@@ -59,12 +69,18 @@ export default function SearchMenu() {
           </select>
         </li>
         <li>
-          <select name="contrato" id="contrato" className="w-56 py-2 px-3 text-sm bg-black border-solid border-2 text-white-600 font-thin border-white-600 ">
+          <select
+            name="contrato"
+            id="contrato"
+            className="w-56 py-2 px-3 text-sm bg-black border-solid border hover:border-2 focus:border-2 text-white-600 font-thin border-white-600 "
+          >
             <option value="Aluguel">Aluguel</option>
             <option value="Venda">Venda</option>
           </select>
         </li>
-        
+        <li>
+          <Button label="Pesquisar" />
+        </li>
       </ul>
     </div>
   );
