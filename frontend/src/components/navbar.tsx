@@ -1,11 +1,11 @@
-
+import Link from "next/link";
 
 export default function Navbar() {
   return (
     <div className="flex items-center justify-between py-4 mx-20 ">
-        <a href="/" className="font-serif font-normal text-2xl text-black ">
-          PRAEDIUM
-        </a>
+      <Link href="/" className="font-serif font-normal text-2xl text-black ">
+        PRAEDIUM
+      </Link>
       <div className="flex gap-9 items-center">
         <div className="border-black border-solid md:border flex items-center p-1">
           <input
@@ -26,9 +26,9 @@ export default function Navbar() {
             </svg>
           </button>
         </div>
-      <a href="" className="text-orange font-normal">
-        Anunciar
-      </a>
+        <Link href="" className="text-orange font-normal">
+          Anunciar
+        </Link>
       </div>
     </div>
   );
