@@ -8,7 +8,7 @@ export default function Home() {
     <div className="flex flex-col gap-14">
       <Hero/>
       <About/>
-      <ImoveisList/>
+      <ImoveisList className="pb-14"/>
     </div>
   );
 }

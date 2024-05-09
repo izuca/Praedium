@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function ImovelCard() {
   return (
     <div className="flex flex-col justify-center items-center w-fit hover:cursor-pointer">
-      <Image src="/hero_background.jpg" alt="teste" width={500} height={500} className="w-fit"/>
+      <Image src="/hero_background.jpg" alt="teste" width={400} height={500} className="w-fit"/>
       <div className="bg-black p-4 flex justify-center items-center gap-5 w-full">
         <div className="flex flex-col">
             <span className="font-bold text-2xl text-white-600">R$150.000</span>
