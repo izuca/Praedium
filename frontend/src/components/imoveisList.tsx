@@ -4,7 +4,7 @@ interface ImovelCardProps {
     className?: string
 }
 
-export default function ImoveisList({ className} : ImovelCardProps ){
+export default function ImoveisList({ className } : ImovelCardProps ){
     return(
         <div className={`flex flex-col items-center gap-10 px-32 ${className}`}>
             <h3 className="font-serif text-4xl ">Imoveis Anunciados</h3>

@@ -1,7 +1,9 @@
+
+
 export default function Navbar() {
   return (
     <div className="flex items-center justify-between py-4 mx-20 ">
-        <a href="" className="font-serif font-normal text-2xl text-black ">
+        <a href="/" className="font-serif font-normal text-2xl text-black ">
           PRAEDIUM
         </a>
       <div className="flex gap-9 items-center">
