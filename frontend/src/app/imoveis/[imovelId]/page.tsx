@@ -46,7 +46,7 @@ export default function ImovelId({ params }: { params: { imovelId: string } }) {
       <div className="hero flex flex-col lg:flex-row justify-center text-black gap-14 lg:gap-40">
         <div className="flex flex-col gap-9">
           <div className="flex flex-col text-center px-12 lg:px-0 lg:text-left">
-            <h3 className="font-serif text-4xl ">Título da Obra</h3>
+            <h3 className="font-serif text-4xl ">Título da Obra {params.imovelId}</h3>
             <p className="text-lg font-light ">Descrição</p>
           </div>
           <div className="flex flex-col gap-2">
@@ -62,7 +62,7 @@ export default function ImovelId({ params }: { params: { imovelId: string } }) {
         </div>
         <Stats valor="999.999,00" contato="99 9999-9999" area={500} quartos={3} banheiros={2}/>
       </div>
-      <ImoveisList/>
+      <ImoveisList cols={3} title="Veja também"/>
     </div>
   );
 }
