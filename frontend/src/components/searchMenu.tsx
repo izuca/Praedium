@@ -1,8 +1,12 @@
 import Button from "./button";
 
-export default function SearchMenu() {
+interface searchMenuProps {
+  className?: string
+}
+
+export default function SearchMenu({className}: searchMenuProps) {
   return (
-    <div className="bg-black flex flex-col gap-8 w-80">
+    <div className={`bg-black flex flex-col gap-8 w-80 ${className}`}>
       <div className="bg-orange h-6" />
       <div className="flex justify-center">
         <h2 className="text-white-900 text-2xl font-thin text-center w-40">

@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${roboto.variable} ${inria.variable} font-sans`}>
+    <html lang="en" className={`${roboto.variable} ${inria.variable} font-sans scroll-smooth`}>
       <body className="bg-white-600 ">
         <Navbar/>
         {children}
