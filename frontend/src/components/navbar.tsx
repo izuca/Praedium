@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Anunciar from "./anunciar";
 
 export default function Navbar() {
   return (
@@ -26,9 +27,10 @@ export default function Navbar() {
             </svg>
           </a>
         </div>
-        <Link href="" className="text-orange font-normal">
+        {/* <Link href="" className="text-orange font-normal">
           Anunciar
-        </Link>
+        </Link> */}
+        <Anunciar/>
       </div>
     </div>
   );
