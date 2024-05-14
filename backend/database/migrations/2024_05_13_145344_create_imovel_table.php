@@ -11,6 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('tipoImovel', function(Blueprint $table){
+            $table->id();
+            $table->string('descricao');
+        });
+
         Schema::create('imovel', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
@@ -28,7 +33,9 @@ return new class extends Migration
             $table->string('uf');
             $table->binary('imagens');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('tipo');
 
+            $table->foreign('tipo')->references('id')->on('tipoImovel');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
