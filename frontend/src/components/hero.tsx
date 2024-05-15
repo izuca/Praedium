@@ -1,6 +1,10 @@
 import SearchMenu from "./searchMenu";
 
-export default function Hero() {
+interface heroProps {
+  children: any
+}
+
+export default function Hero({children}: heroProps) {
   return (
     <div
       className="hero min-h-[580px] flex flex-col lg:flex-row justify-center gap-8 xl:gap-40 py-10 lg:py-0"
@@ -13,7 +17,7 @@ export default function Hero() {
         <p className="text-white-600 text-2xl font-light text-center lg:text-left">Imobiliária descomplicada</p>
       </div>
       <div>
-        <SearchMenu/>
+        {children}
       </div>
     </div>
   );

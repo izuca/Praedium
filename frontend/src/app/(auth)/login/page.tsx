@@ -1,9 +1,11 @@
+'use client'
 
-
-
+import Button from "@/components/button"
+import Hero from "@/components/hero"
 
 export default function Login(){
     return(
+        
         <div className="bg-white p-8 w-96">
         <h1 className="text-2xl font-serif mb-4">Faça login</h1>
         <form>
