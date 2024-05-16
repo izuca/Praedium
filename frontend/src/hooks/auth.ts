@@ -27,10 +27,13 @@ export const useAuth = ({ middleware, redirectIfAuthentcated }: any = {}) => {
 	const register = async ({ setErrors, ...props }: any) => {
 		await csrf();
 		setErrors([]);
-
+		console.log('Registrando...');
 		axios
 			.post('/register', props)
-			.then(() => mutate())
+			.then(() => {
+				console.log('Registrado!');
+				mutate();
+			})
 			.catch((error) => {
 				if (error.response.status !== 422) throw error;
 				setErrors(error.response.data.errors);

@@ -9,7 +9,7 @@ import AuthSessionStatus from '../AuthSessionStatus';
 import ErroEntrada from '@/components/erroEntrada';
 
 export default function Login() {
-	const router = useRouter();
+	const router: any = useRouter();
 	const { login } = useAuth({
 		middleware: 'guest',
 		redirectIfAuthenticated: '/perfil',
@@ -18,8 +18,16 @@ export default function Login() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [shouldRemember, setShouldRemember] = useState(false);
-	const [errors, setErrors] = useState([]);
+	const [errors, setErrors]: any = useState([]);
 	const [status, setStatus] = useState(null);
+
+	useEffect(() => {
+		if (router.reset?.length > 0 && errors.length === 0) {
+			setStatus(atob(router.reset));
+		} else {
+			setStatus(null);
+		}
+	});
 
 	const submitForm = async (event: any) => {
 		event.preventDefault();
@@ -131,7 +139,7 @@ export default function Login() {
 					>
 						Não possui conta? Cadastrar
 					</Link>
-                    <AuthSessionStatus className="mb-4" status={status} />
+					<AuthSessionStatus className="mb-4" status={status} />
 				</form>
 			</div>
 		</Hero>

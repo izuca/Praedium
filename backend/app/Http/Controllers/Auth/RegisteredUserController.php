@@ -35,7 +35,7 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
-
+        echo('aaaaaaaa');
         Auth::login($user);
 
         return response()->noContent();
