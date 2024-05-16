@@ -19,7 +19,9 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
         
-        return response('Logado');
+        Log::info('Usuário autenticado: ' . $user->name . ' (' . $user->email . ')');
+
+        return response()->noContet();
     }
 
     /**
