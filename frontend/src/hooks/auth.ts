@@ -42,10 +42,15 @@ export const useAuth = ({ middleware, redirectIfAuthentcated }: any = {}) => {
 		setErrors([]);
 		setStatus(null);
 
+		console.log('logando...');
 		axios
 			.post('/login', props)
-			.then(() => mutate())
+			.then((res) => {
+				console.log('Usuário logado');
+				mutate();
+			})
 			.catch((error) => {
+				console.log(error);
 				if (error.response.status !== 422) throw error;
 				setErrors(error.response.data.errors);
 			});
