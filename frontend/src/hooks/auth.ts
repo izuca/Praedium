@@ -47,6 +47,7 @@ export const useAuth = ({ middleware, redirectIfAuthentcated }: any = {}) => {
 			.post('/login', props)
 			.then((res) => {
 				console.log('Usuário logado');
+				router.push('/');
 				mutate();
 			})
 			.catch((error) => {

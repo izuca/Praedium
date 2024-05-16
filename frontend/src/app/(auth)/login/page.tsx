@@ -131,6 +131,7 @@ export default function Login() {
 					>
 						Não possui conta? Cadastrar
 					</Link>
+                    <AuthSessionStatus className="mb-4" status={status} />
 				</form>
 			</div>
 		</Hero>
