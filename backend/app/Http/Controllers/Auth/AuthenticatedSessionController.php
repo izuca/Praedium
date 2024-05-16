@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -15,11 +16,13 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): Response
     {
+        Log::channel('stdout')->info('Autenticando...');
+
         $request->authenticate();
 
         $request->session()->regenerate();
-        
-        Log::info('Usuário autenticado: ' . $user->name . ' (' . $user->email . ')');
+
+        Log::channel('stdout')->info('Usuário autenticado: ' . $request->email);
 
         return response()->noContet();
     }

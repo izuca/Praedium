@@ -10,7 +10,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-
+use Illuminate\Support\Facades\Log;
 class RegisteredUserController extends Controller
 {
     /**
@@ -20,11 +20,12 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): Response
     {
+        Log::channel('stdout')->info("Criando...");
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'number' =>['required','string','max:255'],
+            'number' => ['required', 'string', 'max:255'],
         ]);
 
         $user = User::create([
@@ -35,11 +36,9 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
-        echo('aaaaaaaa');
+        Log::channel('stdout')->info("Usuário registrado!");
         Auth::login($user);
 
         return response()->noContent();
     }
-
-
 }
