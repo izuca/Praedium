@@ -48,10 +48,10 @@ Criar um site de imobiliaria com autenticação, CRUD e sistema de busca.
 - Sempre que tiver dificuldade tentando entender a documentação, posso recorrer a vídeo aulas explicando o conceito em dúvida 
 - Para forms, usarei o useState, lembrando que o componente do forms será renderizado pelo lado do cliente
 - É necessário fazer a validação dos dados tanto no front quanto no back
-...Em breve
+...Em breve mais sobre o projeto...
 
 
-
+<!--
     ```html
     <div class="flexbox-container">
         <div class="container">
@@ -89,5 +89,5 @@ html, body, .aligner {
 ```
 
 If you know a better way to centralize those elements or you did understand why I had to use that selectors above, please explain/show me (～￣▽￣)～
-
+-->
 
