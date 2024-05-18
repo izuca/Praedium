@@ -11,9 +11,9 @@ Esse é um projeto pessoal de site de imobiliária feito com NextJs e Laravel.
     - [Pagina Inicial](#pagina-inicial)
     - [Links](#links)
   - [Meu Processo](#meu-processo)
-    - [Built with](#built-with)
+    - [Tecnologias Usadas](#tecnologias-usadas)
     - [Aprendizado](#aprendizado)
-    - [Continued development](#continued-development)
+    <!-- - [Continued development](#continued-development) -->
 
 
 ## Visão Geral
