@@ -1,2 +1,2 @@
 # Praedium
-adm aceita esse pr!!!
+O Praedium é um projeto 
