@@ -3,7 +3,7 @@ import axios from '@/lib/axios';
 import { useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 
-export const useAuth = ({ middleware, redirectIfAuthentcated }: any = {}) => {
+export const useAuth = ({ middleware, redirectIfAuthenticated }: any = {}) => {
 	const router = useRouter();
 	const params = useParams();
 
@@ -13,7 +13,7 @@ export const useAuth = ({ middleware, redirectIfAuthentcated }: any = {}) => {
 		mutate,
 	} = useSWR('/api/user', () =>
 		axios
-			.get('api/user')
+			.get('/api/user')
 			.then((res) => res.data)
 			.catch((error) => {
 				if (error.response.status !== 409) throw error;
@@ -51,7 +51,7 @@ export const useAuth = ({ middleware, redirectIfAuthentcated }: any = {}) => {
 			.then((res) => {
 				console.log('Usuário logado');
 				mutate();
-				router.push('/');
+				
 			})
 			.catch((error) => {
 				console.log(error);
@@ -105,13 +105,13 @@ export const useAuth = ({ middleware, redirectIfAuthentcated }: any = {}) => {
 	};
 
 	useEffect(() => {
-		if (middleware === 'guest' && redirectIfAuthentcated && user)
-			router.push(redirectIfAuthentcated);
+		if (middleware === 'guest' && redirectIfAuthenticated && user)
+			router.push(redirectIfAuthenticated);
 		if (
 			window.location.pathname === '/verify-email' &&
 			user?.email_verified_at
 		)
-			router.push(redirectIfAuthentcated);
+			router.push(redirectIfAuthenticated);
 		if (middleware === 'auth' && error) logout();
 	}, [user, error]);
 
