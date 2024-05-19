@@ -2,13 +2,8 @@
 
 import { AuthProvider } from '@/context/AuthContext';
 import '@/styles/globals.css';
-import { AppProps } from 'next/app';
+import { ReactNode } from 'react';
 
-export default function Providers({ children }) {
-    return (
-        <AuthProvider>
-            {children}
-        </AuthProvider>
-    );
+export default function Providers({ children }: { children: ReactNode }) {
+	return <AuthProvider>{children}</AuthProvider>;
 }
-
