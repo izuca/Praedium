@@ -4,7 +4,7 @@ const ErroEntrada = ({ messages = [], className = '' }:any) => (
             <>
                 {messages.map((message:any, index:any) => (
                     <p
-                        className={`${className} text-sm text-orange`}
+                        className={`${className} text-sm text-orange w-60`}
                         key={index}>
                         {message}
                     </p>

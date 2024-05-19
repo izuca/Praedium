@@ -24,7 +24,7 @@ class AuthenticatedSessionController extends Controller
 
         Log::channel('stdout')->info('Usuário autenticado: ' . $request->email);
 
-        return response()->noContet();
+        return response()->noContent();
     }
 
     /**

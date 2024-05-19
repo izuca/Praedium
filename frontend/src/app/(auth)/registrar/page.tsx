@@ -5,6 +5,7 @@ import Hero from '@/components/hero';
 import { useAuth } from '@/hooks/auth';
 import { useState } from 'react';
 import ErroEntrada from '@/components/erroEntrada';
+import AuthSessionStatus from '../AuthSessionStatus';
 
 export default function Registrar() {
 	const { register } = useAuth({
@@ -40,6 +41,7 @@ export default function Registrar() {
 						Crie a sua conta
 					</h1>
 				</div>
+				<AuthSessionStatus className="mb-4" status={status} />
 				<form
 					className="flex flex-col items-center gap-2 pb-8"
 					onSubmit={submitForm}
@@ -59,7 +61,7 @@ export default function Registrar() {
 							required
 							autoFocus
 							onChange={(event) => setName(event.target.value)}
-							className="w-56 py-2 px-3 text-sm text-white-600 bg-black border-solid border hover:border-2 focus:border-2 text-white-600 font-thin border-white-600 placeholder-white-600 "
+							className="w-56 py-2 px-3 text-sm text-white-600 bg-black border-solid border hover:border-2 focus:border-2 font-thin border-white-600 placeholder-white-600 "
 						/>
 						<ErroEntrada messages={errors.email} className="mt-2" />
 					</div>
