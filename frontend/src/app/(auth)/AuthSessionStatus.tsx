@@ -3,7 +3,7 @@ const AuthSessionStatus = ({ status, className, ...props }: any) => {
 		<>
 			{status && (
 				<div
-					className={`${className} font-medium text-sm text-orange`}
+					className={`${className} font-medium text-center text-sm text-orange`}
 					{...props}
 				>
 					{status}
