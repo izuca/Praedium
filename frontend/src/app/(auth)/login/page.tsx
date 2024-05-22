@@ -46,7 +46,7 @@ export default function Login() {
 				<div className="bg-orange h-6" />
 				<div className="flex justify-center">
 					<h1 className="text-2xl font-serif font-thin text-white-900 text-center w-40">
-						Faça login
+						Faça o login para anunciar.
 					</h1>
 				</div>
 				<form
