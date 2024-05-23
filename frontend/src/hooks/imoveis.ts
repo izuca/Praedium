@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 export function useCRUD(){
-    const router = useRouter();
+
 
     const fetchImoveis = () =>{
         let imoveis = [];
@@ -10,7 +10,7 @@ export function useCRUD(){
             .get('/api/imoveis/')
             .then((data)=>{
                 imoveis = data;
-                console.log(data);
+                console.log('aaa');
             })
             .catch((error) =>{
                 console.log(error)
