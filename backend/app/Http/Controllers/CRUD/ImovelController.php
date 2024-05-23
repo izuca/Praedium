@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ImovelController extends Controller
 {
-   
+//    Falta verificar se o user está autenticado
     public function index()
     {
         $imoveis = Imovel::where('user_id', Auth::id())->get();
@@ -18,6 +18,7 @@ class ImovelController extends Controller
   
     public function store(Request $request)
     {
+        
         $validatedData = $request->validate([
             'nome' => 'required|string|max:255',
             'endereco' => 'required|string|max:255',
