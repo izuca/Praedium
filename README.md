@@ -42,12 +42,17 @@ Criar um site de imobiliaria com autenticação, CRUD e sistema de busca.
 - TailwindCSS
 
 ### Aprendizado
-
+  
 - Fazer o planejamento do projeto pessoal ajuda muito durante o seu desenvolvimento. Durante essa fase inicial, utilizei de Protótipos no Figma, diagramas de caso de uso e de sequência e diagrama Entidade-Relacionamento.
 - Há várias formas de se fazer autenticação, muitas delas já prontas para uso e mais seguras...
 - Sempre que tiver dificuldade tentando entender a documentação, posso recorrer a vídeo aulas explicando o conceito em dúvida 
 - Para forms, usarei o useState, lembrando que o componente do forms será renderizado pelo lado do cliente
 - É necessário fazer a validação dos dados tanto no front quanto no back
+ #### Autenticação
+ #### React Hooks
+ #### CSRF
+ #### React Context
+ #### Servidor e Cliente no Nextjs
 ...Em breve mais sobre o projeto...
 
 
