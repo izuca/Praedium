@@ -2,7 +2,8 @@
 
 import ImovelCard from './imovelCard';
 import { useCRUD } from '@/hooks/imoveis';
-import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from '@/lib/axios';
 interface ImovelCardProps {
 	cols: number;
 	className?: string;
@@ -14,19 +15,28 @@ export default function ImoveisList({
 	cols,
 	title = 'Imoveis Anuniados',
 }: ImovelCardProps) {
-	const {fetchImoveis} = useCRUD();
+	useEffect(() =>{
+		axios
+			.get('/imoveis/')
+			.then((response:any) =>{
+				console.log(response.data)
+			})
+			.catch((error) =>{
+				console.log(error)
+			})
+	},[])
 
-	const [data, setData] = useState([]);
-	const loadImoveis = async(event:any) =>{
-		event.preventDefault();
+	
+	// const loadImoveis = async(event:any) =>{
+	// 	event.preventDefault();
 
-		return[fetchImoveis];
-	}
+	// 	return[fetchImoveis];
+	// }
 
 	return (
 		<div
 			className={`flex flex-col items-center gap-10 px-8  2xl:px-32  ${className}`}
-			onLoad={() => setData(loadImoveis)}
+			// onLoad={() => setData(loadImoveis)}
 		>
 			<h3 className="font-serif text-4xl text-center">{title}</h3>
 			<div
@@ -38,7 +48,7 @@ export default function ImoveisList({
 				<ImovelCard />
 				<ImovelCard />
 				<ImovelCard />
-				{data}
+				
 			</div>
 		</div>
 	);

@@ -1,14 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Imovel;
-use App\Models\Imagem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Imovel;
+use App\Models\Imagem;
 
 class ImovelController extends Controller
 {
-//    Falta verificar se o user está autenticado
+//  Falta verificar se o user está autenticado
     public function index()
     {
         $imoveis = Imovel::where('user_id', Auth::id())->get();
