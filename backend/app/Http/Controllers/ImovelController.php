@@ -1,24 +1,26 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Imovel;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Imagem;
 
 class ImovelController extends Controller
 {
-//  Falta verificar se o user está autenticado
+    //Essa primeira função só funfa se o usuário esiver autenticado. Pro caso que eu quero, preciso criar um outro controller pra buscas personalizadas
     public function index()
     {
         $imoveis = Imovel::where('user_id', Auth::id())->get();
         return response()->json($imoveis);
     }
 
-  
+
     public function store(Request $request)
     {
-        
+
         $validatedData = $request->validate([
             'nome' => 'required|string|max:255',
             'endereco' => 'required|string|max:255',
@@ -54,7 +56,7 @@ class ImovelController extends Controller
             'user_id' => Auth::id(),
         ]);
 
-      
+
         if ($request->has('imagens')) {
             foreach ($request->file('imagens') as $image) {
                 $path = $image->store('properties', 'public');
@@ -65,7 +67,7 @@ class ImovelController extends Controller
         return response()->json($imovel, 201);
     }
 
-   
+
     public function show(Imovel $imovel)
     {
         if ($imovel->user_id !== Auth::id()) {
@@ -74,7 +76,7 @@ class ImovelController extends Controller
         return response()->json($imovel);
     }
 
-   
+
     public function update(Request $request, Imovel $imovel)
     {
         if ($imovel->user_id !== Auth::id()) {
@@ -101,7 +103,7 @@ class ImovelController extends Controller
 
         $imovel->update($validatedData);
 
-       
+
         if ($request->has('imagens')) {
             foreach ($request->file('imagens') as $image) {
                 $path = $image->store('properties', 'public');
@@ -112,12 +114,19 @@ class ImovelController extends Controller
         return response()->json($imovel);
     }
 
-   
+
     public function destroy(Imovel $imovel)
     {
         if ($imovel->user_id !== Auth::id()) {
             return response()->json(['error' => 'Unauthorized'], 403);
         }
+        // Delete related images
+        $imovel->imagens()->each(function ($imagem) {
+            // Delete the image file from storage
+            Storage::disk('public')->delete($imagem->path);
+            // Delete the image record from the database
+            $imagem->delete();
+        });
 
         $imovel->delete();
 
