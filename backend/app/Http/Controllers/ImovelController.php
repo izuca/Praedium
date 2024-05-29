@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Imovel;
+use App\Models\Imoveis;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Imagem;
 
@@ -13,7 +13,7 @@ class ImovelController extends Controller
     //Essa primeira função só funfa se o usuário esiver autenticado. Pro caso que eu quero, preciso criar um outro controller pra buscas personalizadas
     public function index()
     {
-        $imoveis = Imovel::where('user_id', Auth::id())->get();
+        $imoveis = Imoveis::where('user_id', Auth::id())->get();
         return response()->json($imoveis);
     }
 
@@ -39,7 +39,7 @@ class ImovelController extends Controller
             'imagens.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $imovel = Imovel::create([
+        $imovel = Imoveis::create([
             'nome' => $validatedData['nome'],
             'endereco' => $validatedData['endereco'],
             'complemento' => $validatedData['complemento'],
@@ -68,7 +68,7 @@ class ImovelController extends Controller
     }
 
 
-    public function show(Imovel $imovel)
+    public function show(Imoveis $imovel)
     {
         if ($imovel->user_id !== Auth::id()) {
             return response()->json(['error' => 'Unauthorized'], 403);
@@ -77,7 +77,7 @@ class ImovelController extends Controller
     }
 
 
-    public function update(Request $request, Imovel $imovel)
+    public function update(Request $request, Imoveis $imovel)
     {
         if ($imovel->user_id !== Auth::id()) {
             return response()->json(['error' => 'Unauthorized'], 403);
@@ -115,7 +115,7 @@ class ImovelController extends Controller
     }
 
 
-    public function destroy(Imovel $imovel)
+    public function destroy(Imoveis $imovel)
     {
         if ($imovel->user_id !== Auth::id()) {
             return response()->json(['error' => 'Unauthorized'], 403);

@@ -16,6 +16,6 @@ class Imagem extends Model
 
     public function imovel()
     {
-        return $this->belongsTo(Imovel::class);
+        return $this->belongsTo(Imoveis::class);
     }
 }

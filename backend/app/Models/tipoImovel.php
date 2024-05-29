@@ -9,6 +9,6 @@ class tipoImovel extends Model
 {
     use HasFactory;
 
-    protected $table = 'tipoImovel';
+    protected $table = 'tipo_imovel';
     protected $fillable = 'descricao';
 }

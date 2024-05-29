@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Imovel extends Model
+class Imoveis extends Model
 {
     use HasFactory;
 
@@ -33,7 +33,7 @@ class Imovel extends Model
 
     public function tipoImovel()
     {
-        return $this->belongsTo(TipoImovel::class, 'tipo');
+        return $this->belongsTo(tipoImovel::class, 'tipo');
     }
 
     public function imagens()

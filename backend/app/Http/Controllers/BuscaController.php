@@ -1,14 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use App\Models\Imovel;
+use App\Models\Imoveis;
 
 class BuscaController extends Controller
 {
     public function fetchAll(){
-        $imoveis = Imovel::where()->get();
-        return response()->json($imoveis);
+      $imoveis = Imoveis::with('tipoImovel','User','Imagem')
+        ->take(9)
+        ->get();
+
+      return response()->json($imoveis);
     }
 }
